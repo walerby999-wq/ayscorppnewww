@@ -1,0 +1,7 @@
+{
+  "name": "ayscorp-cuadra-web",
+  "private": true,
+  "type": "module",
+  "description": "Sitio web de AYS Corp / Cuadra. Estático + función serverless /api/contact (Vercel).",
+  "engines": { "node": ">=18" }
+}

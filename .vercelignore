@@ -1,0 +1,6 @@
+backup/
+uploads/
+screenshots/
+.claude/
+DEPLOY.md
+.env.example

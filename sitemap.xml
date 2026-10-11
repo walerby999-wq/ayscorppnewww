@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.ayscorp.online/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/en"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.ayscorp.online/"/></url>
+  <url><loc>https://www.ayscorp.online/en</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/en"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.ayscorp.online/"/></url>
+  <url><loc>https://www.ayscorp.online/aviso-legal</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/aviso-legal"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/legal-notice"/></url>
+  <url><loc>https://www.ayscorp.online/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/aviso-legal"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/legal-notice"/></url>
+  <url><loc>https://www.ayscorp.online/politica-de-privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/politica-de-privacidad"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/privacy-policy"/></url>
+  <url><loc>https://www.ayscorp.online/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/politica-de-privacidad"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/privacy-policy"/></url>
+  <url><loc>https://www.ayscorp.online/politica-de-cookies</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/politica-de-cookies"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/cookie-policy"/></url>
+  <url><loc>https://www.ayscorp.online/cookie-policy</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/politica-de-cookies"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/cookie-policy"/></url>
+  <url><loc>https://www.ayscorp.online/terminos-del-servicio</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/terminos-del-servicio"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/terms-of-service"/></url>
+  <url><loc>https://www.ayscorp.online/terms-of-service</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ayscorp.online/terminos-del-servicio"/><xhtml:link rel="alternate" hreflang="en" href="https://www.ayscorp.online/terms-of-service"/></url>
+</urlset>

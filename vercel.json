@@ -1,0 +1,30 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/en/", "destination": "/en", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.dc.html" },
+    { "source": "/en", "destination": "/en.dc.html" },
+    { "source": "/aviso-legal", "destination": "/aviso-legal.dc.html" },
+    { "source": "/politica-de-privacidad", "destination": "/politica-de-privacidad.dc.html" },
+    { "source": "/politica-de-cookies", "destination": "/politica-de-cookies.dc.html" },
+    { "source": "/terminos-del-servicio", "destination": "/terminos-del-servicio.dc.html" },
+    { "source": "/legal-notice", "destination": "/legal-notice.dc.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.dc.html" },
+    { "source": "/cookie-policy", "destination": "/cookie-policy.dc.html" },
+    { "source": "/terms-of-service", "destination": "/terms-of-service.dc.html" }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
+    { "source": "/(.*)\\.dc\\.html", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] },
+    { "source": "/api/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+      { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+    ] }
+  ]
+}

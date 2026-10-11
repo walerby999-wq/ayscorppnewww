@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;background:#F6F7F9;color:#0B1530;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2F5BFF;text-decoration:none}
+a:hover{color:#1E40D8;text-decoration:underline}
+:focus-visible{outline:2px solid #2F5BFF;outline-offset:3px}
+button{font-family:inherit}
+@media (prefers-reduced-motion: reduce){*{transition-duration:0s!important}}
+</style>
+</helmet>
+
+<a href="#contenido" style="position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 14px;border-radius:8px;background:#0B1530;color:#fff;font-size:14px" style-focus="left:16px;color:#fff">{{ t.skip }}</a>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(246,247,249,0.86);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid rgba(11,21,48,0.08)">
+  <div style="max-width:1200px;margin:0 auto;height:64px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="{{ home }}" aria-label="{{ t.homeAria }}" style="display:flex;align-items:center;gap:12px;color:#0B1530;flex-shrink:0;text-decoration:none">
+      <img src="assets/ays-logo-horizontal-navy.png" alt="AYS Corp" width="124" height="26" onError="{{ logoFbDark }}" style="height:26px;width:auto;display:block"></img>
+      <span aria-hidden="true" style="width:1px;height:18px;background:#CBD2DE"></span>
+      <span style="font-size:15px;font-weight:600;letter-spacing:-0.02em">Cuadra</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="{{ home }}" style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-radius:9px;color:#3A465E;font-size:14px;text-decoration:none" style-hover="background:rgba(11,21,48,0.05);color:#0B1530;text-decoration:none"><span aria-hidden="true">←</span>{{ t.back }}</a>
+      <div role="group" aria-label="{{ t.langAria }}" style="display:flex;padding:3px;border-radius:9px;background:rgba(11,21,48,0.05);font-family:'Geist Mono',monospace;font-size:12px">
+        <a href="{{ hrefEs }}" hreflang="es" lang="es" aria-label="Español" aria-current="{{ curEs }}" onClick="{{ setEs }}" style="padding:6px 9px;border-radius:6px;background:{{ esBg }};color:{{ esFg }};font-weight:500;text-decoration:none" style-hover="color:#0B1530;text-decoration:none">ES</a>
+        <a href="{{ hrefEn }}" hreflang="en" lang="en" aria-label="English" aria-current="{{ curEn }}" onClick="{{ setEn }}" style="padding:6px 9px;border-radius:6px;background:{{ enBg }};color:{{ enFg }};font-weight:500;text-decoration:none" style-hover="color:#0B1530;text-decoration:none">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" style="padding:clamp(40px,6vw,80px) 24px clamp(64px,8vw,112px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-start">
+    <nav aria-label="{{ t.docsAria }}" style="flex:0 1 240px;min-width:0;display:flex;flex-direction:column;gap:4px">
+      <span style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B7690;padding:0 12px 8px">Legal</span>
+      <sc-for list="{{ docLinks }}" as="d" hint-placeholder-count="4">
+        <a href="{{ d.href }}" aria-current="{{ d.cur }}" style="padding:9px 12px;border-radius:9px;font-size:14px;color:{{ d.fg }};background:{{ d.bg }};font-weight:{{ d.fw }};text-decoration:none" style-hover="background:rgba(11,21,48,0.05);color:#0B1530;text-decoration:none">{{ d.label }}</a>
+      </sc-for>
+    </nav>
+
+    <article style="flex:1 1 560px;min-width:0;max-width:760px;display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#2F5BFF">Cuadra · AYS Corp</span>
+        <h1 style="margin:0;font-family:'Newsreader',Georgia,'Times New Roman',serif;font-size:clamp(40px,5vw,60px);line-height:1.02;letter-spacing:-0.022em;font-weight:500">{{ doc.title }}</h1>
+        <span style="font-size:14px;color:#6B7690">{{ t.updated }}</span>
+      </div>
+      <div role="note" style="padding:16px 18px;border-radius:14px;background:#FFF8EB;border:1px solid #F3DDB0;display:flex;flex-direction:column;gap:6px">
+        <span style="font-size:14px;font-weight:600;color:#7A4A00">{{ t.draftTitle }}</span>
+        <span style="font-size:14px;line-height:1.6;color:#5C3A00">{{ t.draftText }}</span>
+      </div>
+      <p style="margin:0;font-size:17px;line-height:1.65;color:#3A465E;text-wrap:pretty">{{ doc.intro }}</p>
+      <sc-for list="{{ doc.sections }}" as="s" hint-placeholder-count="6">
+        <section style="display:flex;flex-direction:column;gap:14px;padding-top:28px;border-top:1px solid #E4E7EE">
+          <h2 style="margin:0;font-family:'Newsreader',Georgia,'Times New Roman',serif;font-size:clamp(22px,2.2vw,26px);line-height:1.2;font-weight:500;letter-spacing:-0.012em">{{ s.h }}</h2>
+          <sc-for list="{{ s.blocks }}" as="b" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column">
+              <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0;font-size:16px;line-height:1.72;color:#3A465E;max-width:68ch;text-wrap:pretty">{{ b.text }}</p>
+              </sc-if>
+              <sc-if value="{{ b.isPending }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;padding:10px 14px;border-radius:10px;background:#FFF4E0;border:1px dashed #E4B860;font-size:14.5px;line-height:1.6;color:#5C3A00"><strong style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;color:#8A5300;margin-right:8px">{{ t.pending }}</strong>{{ b.text }}</p>
+              </sc-if>
+              <sc-if value="{{ b.isRow }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:12px 0;border-bottom:1px solid #EEF0F4">
+                  <span style="flex:0 0 200px;font-size:14px;color:#6B7690">{{ b.k }}</span>
+                  <span style="flex:1 1 240px;font-size:15px;color:{{ b.vfg }};background:{{ b.vbg }};padding:{{ b.vpad }};border-radius:6px">{{ b.v }}</span>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </section>
+      </sc-for>
+      <div style="padding-top:28px;border-top:1px solid #E4E7EE;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;color:#55617A">{{ t.questions }} <a href="mailto:info@ayscorp.online">info@ayscorp.online</a></span>
+        <a href="{{ home }}" style="padding:11px 16px;border-radius:10px;background:#0B1530;color:#fff;font-size:14px;font-weight:500;text-decoration:none" style-hover="background:#1B2A55;color:#fff;text-decoration:none">{{ t.backHome }}</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer style="background:#070E22;color:#AEB8CC;padding:48px 24px 32px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:360px">
+        <a href="{{ home }}" aria-label="{{ t.homeAria }}" style="display:flex;align-items:center;gap:12px;align-self:flex-start;text-decoration:none">
+          <img src="assets/ays-logo-horizontal.png" alt="AYS Corp" width="124" height="26" onError="{{ logoFbLight }}" style="height:26px;width:auto;display:block"></img>
+          <span aria-hidden="true" style="width:1px;height:18px;background:rgba(255,255,255,0.2)"></span>
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.02em;color:#fff">Cuadra</span>
+        </a>
+        <a href="mailto:info@ayscorp.online" style="font-size:15px;color:#fff;align-self:flex-start">info@ayscorp.online</a>
+      </div>
+      <nav aria-label="Legal" style="display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;align-items:flex-start">
+        <sc-for list="{{ docLinks }}" as="d" hint-placeholder-count="4"><a href="{{ d.href }}" style="color:#C3CBDB" style-hover="color:#fff">{{ d.label }}</a></sc-for>
+      </nav>
+    </div>
+    <div style="padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:13px;color:#7F8BA6">© 2026 Cuadra. {{ t.rights }}</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;aviso-legal&quot;,&quot;politica-de-privacidad&quot;,&quot;politica-de-cookies&quot;,&quot;terminos-del-servicio&quot;],&quot;default&quot;:&quot;aviso-legal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'es'|'en'&quot;}}">
+const SLUGS = ['aviso-legal', 'politica-de-privacidad', 'politica-de-cookies', 'terminos-del-servicio'];
+const SLUGS_EN = ['legal-notice', 'privacy-policy', 'cookie-policy', 'terms-of-service'];
+const PROD_LOGO = 'https://www.ayscorp.online/assets/ays-logo-horizontal.png';
+const UI = {
+  es: { skip: 'Saltar al contenido', homeAria: 'AYS Corp · Cuadra — inicio', back: 'Inicio', backHome: 'Volver a la página principal', langAria: 'Idioma', docsAria: 'Documentos legales',
+    updated: 'Última actualización: [fecha pendiente de confirmar]', pending: 'Pendiente', rights: 'Todos los derechos reservados.', questions: '¿Dudas sobre este documento?',
+    draftTitle: 'Borrador pendiente de revisión', draftText: 'Este texto se ha preparado a partir de la información verificable disponible y no constituye asesoramiento jurídico. Los apartados marcados como pendientes deben completarlos el titular y revisarlos un profesional antes de considerar definitivo el documento.',
+    labels: ['Aviso legal', 'Política de privacidad', 'Política de cookies', 'Términos del servicio'] },
+  en: { skip: 'Skip to content', homeAria: 'AYS Corp · Cuadra — home', back: 'Home', backHome: 'Back to the home page', langAria: 'Language', docsAria: 'Legal documents',
+    updated: 'Last updated: [date pending confirmation]', pending: 'Pending', rights: 'All rights reserved.', questions: 'Questions about this document?',
+    draftTitle: 'Draft pending review', draftText: 'This text has been prepared from the verifiable information available and does not constitute legal advice. Sections marked as pending must be completed by the owner and reviewed by a professional before the document is considered final. The Spanish version prevails.',
+    labels: ['Legal notice', 'Privacy policy', 'Cookie policy', 'Terms of service'] }
+};
+// "!" prefix = pending item; arrays [k, v] = data row
+const DOCS = {
+  es: {
+    'aviso-legal': { title: 'Aviso legal', desc: 'Aviso legal del sitio web www.ayscorp.online, titularidad de AYS Corp, desarrollador de Cuadra.',
+      intro: 'Este aviso regula el acceso y uso del sitio web www.ayscorp.online, a través del cual AYS Corp presenta Cuadra, su plataforma de auditoría y conciliación financiera automatizada, y permite solicitar demostraciones.',
+      sections: [
+        { h: '1. Datos identificativos del titular', b: [
+          '!Si el titular está establecido en España, el artículo 10 de la Ley 34/2002 (LSSI-CE) exige publicar los siguientes datos. Confirmar la jurisdicción aplicable.',
+          ['Titular', '!Razón social completa y forma jurídica de AYS Corp'], ['NIF / CIF', '!Pendiente'], ['Domicilio social', '!Pendiente'],
+          ['Datos registrales', '!Registro Mercantil, tomo, folio, hoja e inscripción'], ['Email de contacto', 'info@ayscorp.online'], ['Sitio web', 'https://www.ayscorp.online/'] ] },
+        { h: '2. Objeto del sitio web', b: ['El sitio ofrece información comercial sobre Cuadra, sus planes y su funcionamiento, y un formulario para solicitar una demostración. Las demostraciones interactivas del sitio utilizan datos ficticios y no corresponden a clientes reales.'] },
+        { h: '3. Condiciones de uso', b: ['El acceso al sitio es gratuito y atribuye la condición de usuario. El usuario se compromete a utilizarlo de forma lícita, sin dañar su funcionamiento ni introducir información falsa o de terceros sin autorización.'] },
+        { h: '4. Propiedad intelectual e industrial', b: ['Los textos, diseños, logotipos, marcas (incluidas «AYS Corp» y «Cuadra») y demás contenidos del sitio pertenecen a su titular o se utilizan con autorización. No se permite su reproducción, distribución o transformación sin consentimiento previo por escrito.', '!Confirmar la titularidad y, en su caso, el registro de las marcas «AYS Corp» y «Cuadra».'] },
+        { h: '5. Responsabilidad', b: ['La información del sitio tiene carácter divulgativo y comercial. Las cifras de ahorro de tiempo y rendimiento indicadas son estimaciones comerciales, no resultados garantizados. El contenido no constituye asesoramiento contable, fiscal ni jurídico.', 'El titular no se responsabiliza de interrupciones técnicas ajenas a su control ni del uso indebido del sitio por parte de terceros.'] },
+        { h: '6. Enlaces externos', b: ['Si el sitio incluye enlaces a páginas de terceros, el titular no controla ni asume responsabilidad sobre sus contenidos o políticas.'] },
+        { h: '7. Legislación aplicable y jurisdicción', b: ['!Indicar la legislación aplicable y los juzgados competentes, respetando en todo caso los derechos que la normativa de consumidores reconozca al usuario.'] }
+      ] },
+    'politica-de-privacidad': { title: 'Política de privacidad', desc: 'Cómo trata AYS Corp los datos personales recogidos en www.ayscorp.online y en la solicitud de demo de Cuadra.',
+      intro: 'Esta política explica qué datos personales se recogen a través de este sitio, para qué se utilizan y qué derechos tienes, conforme al Reglamento (UE) 2016/679 (RGPD) y la normativa de protección de datos aplicable.',
+      sections: [
+        { h: '1. Responsable del tratamiento', b: [['Responsable', '!Razón social completa de AYS Corp'], ['NIF / CIF', '!Pendiente'], ['Domicilio', '!Pendiente'], ['Contacto', 'info@ayscorp.online'], ['Delegado de protección de datos', '!Indicar si se ha designado y su contacto']] },
+        { h: '2. Datos que tratamos', b: ['A través del formulario de demo: nombre y apellidos, email corporativo, empresa, sector, volumen mensual de documentos, plan de interés y el mensaje opcional que escribas. Si nos escribes a info@ayscorp.online, los datos incluidos en tu email.', 'Datos técnicos de conexión (como la dirección IP) que el proveedor de alojamiento puede registrar para servir el sitio y garantizar su seguridad.', '!Confirmar qué registros técnicos conserva el proveedor de alojamiento y durante cuánto tiempo.'] },
+        { h: '3. Finalidades', b: ['Gestionar tu solicitud de demo, contactar contigo para organizarla y responder a tus consultas. No utilizamos estos datos para enviarte comunicaciones comerciales sin un consentimiento específico, ni para tomar decisiones automatizadas con efectos jurídicos sobre ti.'] },
+        { h: '4. Base jurídica', b: ['Tu consentimiento al enviar la solicitud (art. 6.1.a RGPD) y la aplicación, a petición tuya, de medidas precontractuales (art. 6.1.b RGPD). Puedes retirar tu consentimiento en cualquier momento sin que ello afecte a la licitud del tratamiento previo.'] },
+        { h: '5. Plazo de conservación', b: ['!Definir durante cuánto tiempo se conservan los datos de solicitudes de demo y comunicaciones, y los criterios de bloqueo y supresión.'] },
+        { h: '6. Destinatarios y encargados del tratamiento', b: ['No vendemos ni cedemos tus datos. Pueden acceder a ellos proveedores que nos prestan servicios técnicos, bajo contrato de encargo del tratamiento.', '!Alojamiento web: confirmar proveedor (el sitio está preparado para desplegarse en Vercel) y región de servicio.', '!Servicio de envío de formularios: aún no conectado. Indicar el proveedor cuando se integre.', '!Proveedor de correo electrónico de info@ayscorp.online.', 'El sitio carga tipografías desde Google Fonts, por lo que el navegador transmite tu dirección IP a Google al visitarlo. Se recomienda alojar las fuentes en el propio servidor.'] },
+        { h: '7. Transferencias internacionales', b: ['!Algunos proveedores (por ejemplo, Vercel o Google) son empresas estadounidenses. Confirmar si existen transferencias fuera del EEE y las garantías aplicables (Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).'] },
+        { h: '8. Datos tratados dentro de Cuadra', b: ['Cuando un cliente sube documentos a Cuadra, AYS Corp los trata por cuenta del cliente como encargado del tratamiento, conforme al art. 28 RGPD y al contrato correspondiente. Cuadra utiliza servidores ubicados en la UE.', '!Publicar o referenciar el contrato de encargo del tratamiento (DPA) y la lista de subencargados.'] },
+        { h: '9. Tus derechos', b: ['Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a info@ayscorp.online, indicando el derecho que ejerces. Si consideras que no hemos atendido correctamente tu solicitud, puedes reclamar ante la autoridad de control competente; en España, la Agencia Española de Protección de Datos (www.aepd.es).'] },
+        { h: '10. Seguridad', b: ['!Describir únicamente las medidas técnicas y organizativas efectivamente implantadas (cifrado, control de accesos, registros de auditoría, copias de seguridad).'] },
+        { h: '11. Cambios en esta política', b: ['Cualquier cambio relevante se publicará en esta página con su fecha de actualización.'] }
+      ] },
+    'politica-de-cookies': { title: 'Política de cookies', desc: 'Información sobre las cookies y tecnologías de almacenamiento que utiliza www.ayscorp.online.',
+      intro: 'Esta política explica qué cookies y tecnologías similares utiliza este sitio. A fecha de esta versión, el sitio no instala cookies analíticas, publicitarias ni de personalización de terceros, por lo que no muestra un banner de consentimiento.',
+      sections: [
+        { h: '1. Qué son las cookies', b: ['Las cookies y tecnologías similares (como el almacenamiento local del navegador) son pequeños archivos o registros que un sitio guarda en tu dispositivo para recordar información.'] },
+        { h: '2. Tecnologías que utiliza este sitio', b: [['Nombre', 'cuadra_lang'], ['Tipo', 'Almacenamiento local (localStorage), propio'], ['Finalidad', 'Recordar el idioma que has elegido (ES / EN)'], ['Duración', 'Hasta que borres los datos del sitio en tu navegador'], ['Categoría', 'Técnica, solicitada por el usuario. Exenta de consentimiento (art. 22.2 LSSI-CE)']] },
+        { h: '3. Recursos de terceros', b: ['El sitio carga tipografías desde Google Fonts (fonts.googleapis.com y fonts.gstatic.com). Este servicio recibe tu dirección IP para entregar los archivos.', '!Verificar que el proveedor de alojamiento no tiene activada ninguna herramienta de analítica o medición (por ejemplo, Vercel Web Analytics). Si se activa, deberá implantarse un sistema de consentimiento previo.'] },
+        { h: '4. Consentimiento', b: ['Como el sitio no utiliza cookies no esenciales, no se solicita consentimiento. Si en el futuro se incorporan herramientas analíticas o de marketing, se añadirá un panel que permita aceptarlas, rechazarlas, configurarlas por categorías y retirar el consentimiento en cualquier momento, y no se cargarán antes de que des tu consentimiento.'] },
+        { h: '5. Cómo gestionar o eliminar estos datos', b: ['Puedes eliminar el almacenamiento local y las cookies desde la configuración de privacidad de tu navegador. Si borras «cuadra_lang», el sitio volverá a mostrarse en el idioma predeterminado.'] },
+        { h: '6. Cambios', b: ['Actualizaremos esta política si cambian las tecnologías utilizadas.'] }
+      ] },
+    'terminos-del-servicio': { title: 'Términos del servicio', desc: 'Condiciones de contratación y uso de Cuadra, la plataforma de conciliación financiera de AYS Corp.',
+      intro: 'Estos términos regulan la contratación y el uso de Cuadra, la plataforma SaaS de auditoría y conciliación financiera automatizada de AYS Corp, por parte de empresas y profesionales.',
+      sections: [
+        { h: '1. Partes y aceptación', b: ['El servicio lo presta AYS Corp, cuyos datos figuran en el Aviso legal. Al contratar Cuadra, el cliente acepta estos términos y, en su caso, las condiciones particulares de su propuesta comercial.'] },
+        { h: '2. Descripción del servicio', b: ['Cuadra utiliza inteligencia artificial para interpretar y extraer datos de documentos (facturas, albaranes, cobros, extractos bancarios) y un motor matemático determinista para realizar los cálculos de conciliación.', 'Los resultados son una herramienta de apoyo: el cliente es responsable de revisar las incidencias y validar la información antes de utilizarla con fines contables, fiscales o de auditoría. Cuadra no sustituye el asesoramiento profesional.'] },
+        { h: '3. Planes y precios', b: [['Comercios', '89 € / mes · hasta 500 documentos al mes'], ['Clínicas', '149 € / mes · hasta 2.000 documentos al mes'], ['Enterprise', 'Precio a medida según contrato'], ['Pago anual', '20 % de descuento: 71,20 € / mes (854,40 € al año) y 119,20 € / mes (1.430,40 € al año)'], ['Impuestos', 'Precios sin IVA']] },
+        { h: '4. Periodo de prueba', b: ['!Definir si existe un periodo de prueba, su duración y condiciones. Mientras no se defina, no se ofrece prueba gratuita; solicitar una demo no requiere tarjeta.'] },
+        { h: '5. Facturación y pago', b: ['!Definir medios de pago, momento de cobro, renovación automática y tratamiento de excesos sobre el límite de documentos del plan.'] },
+        { h: '6. Duración, cancelación y baja', b: ['!Definir el periodo de permanencia (si existe), el preaviso de cancelación, el reembolso en planes anuales y el plazo para exportar los datos tras la baja.'] },
+        { h: '7. Datos del cliente', b: ['El cliente conserva la titularidad de sus documentos y datos. AYS Corp los trata como encargado del tratamiento únicamente para prestar el servicio, conforme al art. 28 RGPD.', '!Adjuntar el contrato de encargo del tratamiento (DPA).'] },
+        { h: '8. Soporte y disponibilidad', b: ['El soporte se presta por email (plan Comercios), con prioridad (plan Clínicas) o con gestor dedicado (Enterprise), según el plan contratado.', '!Definir horarios de soporte y, en su caso, compromisos de disponibilidad (SLA).'] },
+        { h: '9. Uso aceptable', b: ['El cliente se compromete a subir solo documentos sobre los que tenga legitimación y a no utilizar el servicio con fines ilícitos.'] },
+        { h: '10. Limitación de responsabilidad', b: ['!Definir el alcance y los límites de responsabilidad de AYS Corp.'] },
+        { h: '11. Modificaciones', b: ['!Definir cómo y con qué antelación se comunicarán cambios en los términos o en los precios.'] },
+        { h: '12. Ley aplicable y jurisdicción', b: ['!Indicar la legislación aplicable y los tribunales competentes.'] }
+      ] }
+  },
+  en: {
+    'aviso-legal': { title: 'Legal notice', desc: 'Legal notice for www.ayscorp.online, owned by AYS Corp, developer of Cuadra.',
+      intro: 'This notice governs access to and use of www.ayscorp.online, through which AYS Corp presents Cuadra, its automated financial auditing and reconciliation platform, and lets visitors request demos.',
+      sections: [
+        { h: '1. Owner identification', b: [
+          '!If the owner is established in Spain, Article 10 of Law 34/2002 (LSSI-CE) requires publishing the following details. Confirm the applicable jurisdiction.',
+          ['Owner', '!Full legal name and company type of AYS Corp'], ['Tax ID', '!Pending'], ['Registered address', '!Pending'],
+          ['Registry details', '!Commercial Registry volume, folio, sheet and entry'], ['Contact email', 'info@ayscorp.online'], ['Website', 'https://www.ayscorp.online/'] ] },
+        { h: '2. Purpose of the website', b: ['The site provides commercial information about Cuadra, its plans and how it works, and a form to request a demo. The interactive demos on the site use fictitious data and do not correspond to real customers.'] },
+        { h: '3. Terms of use', b: ['Access to the site is free. Users agree to use it lawfully, without damaging its operation or submitting false or third-party information without authorization.'] },
+        { h: '4. Intellectual and industrial property', b: ['The texts, designs, logos, trademarks (including “AYS Corp” and “Cuadra”) and other content belong to the owner or are used with authorization. Reproduction, distribution or modification without prior written consent is not permitted.', '!Confirm ownership and, where applicable, registration of the “AYS Corp” and “Cuadra” trademarks.'] },
+        { h: '5. Liability', b: ['The information on the site is informational and commercial. Time-saving and performance figures are commercial estimates, not guaranteed results. The content does not constitute accounting, tax or legal advice.', 'The owner is not liable for technical interruptions beyond its control or for misuse of the site by third parties.'] },
+        { h: '6. External links', b: ['If the site links to third-party pages, the owner does not control or accept responsibility for their content or policies.'] },
+        { h: '7. Governing law and jurisdiction', b: ['!State the governing law and competent courts, always respecting any rights consumer law grants the user.'] }
+      ] },
+    'politica-de-privacidad': { title: 'Privacy policy', desc: 'How AYS Corp processes personal data collected on www.ayscorp.online and through Cuadra demo requests.',
+      intro: 'This policy explains what personal data is collected through this site, what it is used for and what rights you have, under Regulation (EU) 2016/679 (GDPR) and applicable data protection law.',
+      sections: [
+        { h: '1. Data controller', b: [['Controller', '!Full legal name of AYS Corp'], ['Tax ID', '!Pending'], ['Address', '!Pending'], ['Contact', 'info@ayscorp.online'], ['Data protection officer', '!State whether one has been appointed and their contact details']] },
+        { h: '2. Data we process', b: ['Through the demo form: full name, work email, company, industry, monthly document volume, plan of interest and any optional message. If you email info@ayscorp.online, the data included in your email.', 'Technical connection data (such as IP address) that the hosting provider may log to serve the site and keep it secure.', '!Confirm which technical logs the hosting provider keeps and for how long.'] },
+        { h: '3. Purposes', b: ['To handle your demo request, contact you to arrange it and answer your questions. We do not use this data to send you marketing without specific consent, nor to make automated decisions with legal effects on you.'] },
+        { h: '4. Legal basis', b: ['Your consent when submitting the request (Art. 6.1.a GDPR) and taking pre-contractual steps at your request (Art. 6.1.b GDPR). You may withdraw consent at any time without affecting the lawfulness of prior processing.'] },
+        { h: '5. Retention period', b: ['!Define how long demo request and communication data is kept, and the criteria for blocking and deletion.'] },
+        { h: '6. Recipients and processors', b: ['We do not sell or share your data. Providers delivering technical services may access it under a data processing agreement.', '!Web hosting: confirm the provider (the site is prepared for deployment on Vercel) and service region.', '!Form submission service: not yet connected. Name the provider once integrated.', '!Email provider for info@ayscorp.online.', 'The site loads fonts from Google Fonts, so your browser sends your IP address to Google when you visit. Self-hosting the fonts is recommended.'] },
+        { h: '7. International transfers', b: ['!Some providers (e.g. Vercel or Google) are US companies. Confirm whether data is transferred outside the EEA and the safeguards applied (EU-US Data Privacy Framework or standard contractual clauses).'] },
+        { h: '8. Data processed within Cuadra', b: ['When a customer uploads documents to Cuadra, AYS Corp processes them on the customer’s behalf as a processor, under Art. 28 GDPR and the relevant contract. Cuadra uses servers located in the EU.', '!Publish or reference the data processing agreement (DPA) and the list of sub-processors.'] },
+        { h: '9. Your rights', b: ['You can exercise your rights of access, rectification, erasure, objection, restriction and portability by emailing info@ayscorp.online and stating the right you are exercising. If you believe your request has not been handled properly, you may complain to the competent supervisory authority; in Spain, the Agencia Española de Protección de Datos (www.aepd.es).'] },
+        { h: '10. Security', b: ['!Describe only the technical and organizational measures actually in place (encryption, access control, audit logs, backups).'] },
+        { h: '11. Changes to this policy', b: ['Any significant change will be published on this page with its update date.'] }
+      ] },
+    'politica-de-cookies': { title: 'Cookie policy', desc: 'Information about the cookies and storage technologies used by www.ayscorp.online.',
+      intro: 'This policy explains which cookies and similar technologies this site uses. As of this version, the site does not set analytics, advertising or third-party personalization cookies, so it does not display a consent banner.',
+      sections: [
+        { h: '1. What cookies are', b: ['Cookies and similar technologies (such as the browser’s local storage) are small files or records a site stores on your device to remember information.'] },
+        { h: '2. Technologies used on this site', b: [['Name', 'cuadra_lang'], ['Type', 'Local storage (localStorage), first-party'], ['Purpose', 'Remember the language you chose (ES / EN)'], ['Duration', 'Until you clear the site’s data in your browser'], ['Category', 'Technical, requested by the user. Exempt from consent (Art. 22.2 LSSI-CE)']] },
+        { h: '3. Third-party resources', b: ['The site loads fonts from Google Fonts (fonts.googleapis.com and fonts.gstatic.com). This service receives your IP address to deliver the files.', '!Verify that the hosting provider has no analytics or measurement tool enabled (e.g. Vercel Web Analytics). If one is enabled, a prior-consent system must be implemented.'] },
+        { h: '4. Consent', b: ['Because the site uses no non-essential cookies, no consent is requested. If analytics or marketing tools are added in the future, a panel will let you accept, reject, configure by category and withdraw consent at any time, and those tools will not load before you consent.'] },
+        { h: '5. Managing or deleting this data', b: ['You can delete local storage and cookies from your browser’s privacy settings. If you delete “cuadra_lang”, the site will show in its default language again.'] },
+        { h: '6. Changes', b: ['We will update this policy if the technologies used change.'] }
+      ] },
+    'terminos-del-servicio': { title: 'Terms of service', desc: 'Subscription and usage terms for Cuadra, AYS Corp’s financial reconciliation platform.',
+      intro: 'These terms govern the subscription to and use of Cuadra, AYS Corp’s SaaS platform for automated financial auditing and reconciliation, by businesses and professionals.',
+      sections: [
+        { h: '1. Parties and acceptance', b: ['The service is provided by AYS Corp, whose details appear in the Legal notice. By subscribing to Cuadra, the customer accepts these terms and any specific conditions in their commercial proposal.'] },
+        { h: '2. Service description', b: ['Cuadra uses artificial intelligence to interpret and extract data from documents (invoices, delivery notes, payments, bank statements) and a deterministic math engine to perform reconciliation calculations.', 'Results are a support tool: the customer is responsible for reviewing issues and validating information before using it for accounting, tax or audit purposes. Cuadra does not replace professional advice.'] },
+        { h: '3. Plans and pricing', b: [['Retail', '€89 / month · up to 500 documents per month'], ['Clinics', '€149 / month · up to 2,000 documents per month'], ['Enterprise', 'Custom pricing per contract'], ['Annual billing', '20% discount: €71.20 / month (€854.40 per year) and €119.20 / month (€1,430.40 per year)'], ['Taxes', 'Prices exclude VAT']] },
+        { h: '4. Trial period', b: ['!Define whether a trial period exists, its length and conditions. Until defined, no free trial is offered; requesting a demo does not require a card.'] },
+        { h: '5. Billing and payment', b: ['!Define payment methods, billing timing, automatic renewal and handling of usage above the plan’s document limit.'] },
+        { h: '6. Term, cancellation and termination', b: ['!Define any minimum term, cancellation notice, refunds on annual plans and the window to export data after termination.'] },
+        { h: '7. Customer data', b: ['The customer retains ownership of their documents and data. AYS Corp processes them as a processor solely to provide the service, under Art. 28 GDPR.', '!Attach the data processing agreement (DPA).'] },
+        { h: '8. Support and availability', b: ['Support is provided by email (Retail), with priority (Clinics) or through a dedicated account manager (Enterprise), depending on the plan.', '!Define support hours and any availability commitments (SLA).'] },
+        { h: '9. Acceptable use', b: ['The customer agrees to upload only documents they are entitled to process and not to use the service for unlawful purposes.'] },
+        { h: '10. Limitation of liability', b: ['!Define the scope and limits of AYS Corp’s liability.'] },
+        { h: '11. Changes', b: ['!Define how and with what notice changes to the terms or prices will be communicated.'] },
+        { h: '12. Governing law and jurisdiction', b: ['!State the governing law and competent courts.'] }
+      ] }
+  }
+};
+
+class Component extends DCLogic {
+  // Language comes from the URL (wrapper prop); the choice is remembered locally.
+  remember(l) { return () => { try { localStorage.setItem('cuadra_lang', l); } catch (e) {} }; }
+  slug() { return SLUGS.includes(this.props.page) ? this.props.page : 'aviso-legal'; }
+  renderVals() {
+    const lang = this.props.lang === 'en' ? 'en' : 'es';
+    const t = UI[lang], slug = this.slug();
+    const clean = typeof location !== 'undefined' && /(^|\.)ayscorp\.online$|\.vercel\.app$/.test(location.hostname);
+    const href = (s) => clean ? '/' + s : s + '.dc.html';
+    const ix = SLUGS.indexOf(slug);
+    const slugsFor = (l) => l === 'en' ? SLUGS_EN : SLUGS;
+    const raw = DOCS[lang][slug];
+    const block = (x) => {
+      if (Array.isArray(x)) { const p = x[1].startsWith('!'); return { isRow: true, k: x[0], v: p ? x[1].slice(1) + ' · ' + t.pending : x[1], vfg: p ? '#5C3A00' : '#0B1530', vbg: p ? '#FFF4E0' : 'transparent', vpad: p ? '2px 8px' : '0' }; }
+      if (x.startsWith('!')) return { isPending: true, text: x.slice(1) };
+      return { isText: true, text: x };
+    };
+    const doc = { ...raw, sections: raw.sections.map(s => ({ h: s.h, blocks: s.b.map(block) })) };
+    const fb = (dark) => (ev) => { const img = ev.currentTarget; if (img.dataset.fb) return; img.dataset.fb = '1'; img.src = PROD_LOGO; if (dark) img.style.filter = 'brightness(0) saturate(100%)'; };
+    const on = (x) => x ? '#fff' : 'transparent', onF = (x) => x ? '#0B1530' : '#6B7690';
+    return {
+      t, doc, home: lang === 'en' ? (clean ? '/en' : 'en.dc.html') : (clean ? '/' : 'index.dc.html'),
+      hrefEs: href(SLUGS[ix]), hrefEn: href(SLUGS_EN[ix]), curEs: lang === 'es' ? 'page' : 'false', curEn: lang === 'en' ? 'page' : 'false',
+      docLinks: SLUGS.map((s, i) => ({ href: href(slugsFor(lang)[i]), label: t.labels[i], cur: s === slug ? 'page' : 'false', fg: s === slug ? '#0B1530' : '#55617A', bg: s === slug ? '#fff' : 'transparent', fw: s === slug ? 500 : 400 })),
+      logoFbDark: fb(true), logoFbLight: fb(false),
+      setEs: this.remember('es'), setEn: this.remember('en'),
+      esBg: on(lang === 'es'), esFg: onF(lang === 'es'), enBg: on(lang === 'en'), enFg: onF(lang === 'en')
+    };
+  }
+}
+</script>
+</body>
+</html>
