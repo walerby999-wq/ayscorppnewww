@@ -43,6 +43,15 @@ Destinatario fijo en el código (`info@ayscorp.online`). El email del visitante 
 
 Para probar en local: `npm i -g vercel`, `vercel link`, `vercel env pull .env.local` y `vercel dev`.
 
+## 1b. Vercel Web Analytics y Speed Insights
+
+No hace falta `npm i`: el sitio no usa Next.js ni React con build, así que no aplican las instrucciones de `@vercel/analytics/next`. `consent.js` carga los scripts oficiales `/_vercel/insights/script.js` y `/_vercel/speed-insights/script.js` **solo si el visitante acepta** en el aviso, y únicamente en ayscorp.online o *.vercel.app.
+
+1. Vercel → proyecto → **Analytics** → *Enable*, y **Speed Insights** → *Enable*.
+2. Sube los cambios y vuelve a desplegar.
+3. Abre la web, pulsa «Aceptar» y navega por 2 o 3 páginas. Los datos aparecen en el panel al cabo de unos minutos.
+4. Para cambiar la elección: «Preferencias de cookies» en el pie de página.
+
 ## 2. Tipografía
 
 - **Titulares (H1, H2, títulos de capas y de páginas legales):** *Newsreader* (Production Type, SIL Open Font License), con pesos 400/500 y cursiva para el acento del H1. Es una serif editorial con eje óptico: aporta credibilidad y personalidad «financiera» sin perder legibilidad.
